@@ -25,7 +25,7 @@ const createAtomContext = (initialStates: InitialAtomState[]) => {
 const AtomContext = React.createContext(createAtomContext([]))
 
 export interface AtomProviderProps {
-  initialState?: InitialAtomState[]
+  initialState?: InitialAtomState<any>[]
 }
 
 export const AtomProvider: React.FC<AtomProviderProps> = ({ children, initialState = [] }) => {
