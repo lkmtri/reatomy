@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef, useCallback, useLayoutEffect } from 'react'
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useLayoutEffect,
+} from 'react'
 import type { Atom } from './atom'
 import { useAtomContext } from './context'
 
@@ -31,7 +37,7 @@ export function useAtomReducer<T, A>(atom: Atom<T>, reducer: Reducer<T, A>) {
     (action: A) => {
       atomState.set(reducerRef.current(atomState.get(), action))
     },
-    [atomState]
+    [atomState],
   )
 
   return [state, dispatch] as const

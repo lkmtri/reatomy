@@ -74,4 +74,9 @@ function useAtomReducer(atom, reducer) {
     return [state, dispatch];
 }
 
-export { AtomProvider, createAtom as atom, useAtom, useAtomReducer };
+function AtomConsumer(props) {
+    var atom = useAtom(props.atom)[0];
+    return props.children(atom);
+}
+
+export { AtomConsumer, AtomProvider, createAtom as atom, useAtom, useAtomReducer };

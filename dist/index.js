@@ -141,6 +141,15 @@ function useAtomReducer(atom, reducer) {
   return [state, dispatch];
 }
 
+function AtomConsumer(props) {
+  var _useAtom = useAtom(props.atom),
+      _useAtom2 = _slicedToArray__default['default'](_useAtom, 1),
+      atom = _useAtom2[0];
+
+  return props.children(atom);
+}
+
+exports.AtomConsumer = AtomConsumer;
 exports.AtomProvider = AtomProvider;
 exports.atom = createAtom;
 exports.useAtom = useAtom;

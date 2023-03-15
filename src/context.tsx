@@ -28,7 +28,10 @@ export interface AtomProviderProps {
   initialState?: InitialAtomState<any>[]
 }
 
-export const AtomProvider: React.FC<AtomProviderProps> = ({ children, initialState = [] }) => {
+export const AtomProvider: React.FC<AtomProviderProps> = ({
+  children,
+  initialState = [],
+}) => {
   const [context] = useState(() => createAtomContext(initialState))
   return <AtomContext.Provider value={context}>{children}</AtomContext.Provider>
 }

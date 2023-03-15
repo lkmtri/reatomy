@@ -42,7 +42,10 @@ const createAtomContext = (initialStates) => {
   return getAtom;
 };
 const AtomContext = React.createContext(createAtomContext([]));
-const AtomProvider = ({ children, initialState = [] }) => {
+const AtomProvider = ({
+  children,
+  initialState = []
+}) => {
   const [context] = useState(() => createAtomContext(initialState));
   return /* @__PURE__ */ React.createElement(AtomContext.Provider, {
     value: context
@@ -73,4 +76,9 @@ function useAtomReducer(atom, reducer) {
   return [state, dispatch];
 }
 
-export { AtomProvider, createAtom as atom, useAtom, useAtomReducer };
+function AtomConsumer(props) {
+  const [atom] = useAtom(props.atom);
+  return props.children(atom);
+}
+
+export { AtomConsumer, AtomProvider, createAtom as atom, useAtom, useAtomReducer };
