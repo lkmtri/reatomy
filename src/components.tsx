@@ -3,7 +3,7 @@ import { useAtom } from './hooks'
 
 interface AtomConsumerProps<AtomValue = any> {
   atom: Atom<AtomValue>
-  children: (value: AtomValue) => React.ReactNode
+  children: (value: AtomValue) => JSX.Element
 }
 
 export function AtomConsumer<AtomValue = any>(
